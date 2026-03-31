@@ -1,30 +1,21 @@
+import aselole.Register;
+import aselole.RegisterUserRequest;
+import aselole.UserValidator;
+import aselole.ValidasiSalah;
+
 public class App {
     public static void main(String[] args) throws Exception {
-        anjing a = new anjing();
-        a.nama = "asw";
-        System.out.println(a.nama);
-        a.suara();
+        UserValidator userValidator = new UserValidator();
+        Register register = new Register(userValidator);
 
-        kucing b = new kucing();
-        b.nama = "pussy";
-        System.out.println(b.nama);
-        b.suara();
+        RegisterUserRequest request = new RegisterUserRequest();
+        request.setUsername("");
+        request.setPassword("");
 
-        System.out.println();
-
-        mahasiswa m = new mahasiswa("Rohmat", "24311138");
-        m.tampil();
-
-        System.out.println();
-
-        Motor motor = new Motor("mazda");
-        motor.tampil();
-        motor.jalan();
-
-        System.out.println();
-
-        Mobil mobil = new Mobil("Supra");
-        mobil.tampil();
-        mobil.jalan();
+        try {
+            register.register(request);
+        } catch (ValidasiSalah e) {
+            System.out.println(e.GetErrors());
+        }
     }
 }
