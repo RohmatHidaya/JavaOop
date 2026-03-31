@@ -9,8 +9,8 @@ public class App {
         Register register = new Register(userValidator);
 
         RegisterUserRequest request = new RegisterUserRequest();
-        request.setUsername("");
-        request.setPassword("");
+        request.setUsername("sdfklaj");
+        request.setPassword("asldkfj");
 
         try {
             register.register(request);
